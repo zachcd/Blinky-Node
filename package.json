@@ -1,0 +1,9 @@
+{
+  "name": "Blinker-Node",
+  "version": "0.0.1",
+  "description": "This is a Blessed interface for my Blink!",
+  "main": "terminal.js",
+  "repository": "https://github.com/LibertyBeta/Blinky-Node",
+  "author": "Rainer Paskiewicz",
+  "license": "GNU"
+}
