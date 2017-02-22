@@ -5,5 +5,9 @@
   "main": "terminal.js",
   "repository": "https://github.com/LibertyBeta/Blinky-Node",
   "author": "Rainer Paskiewicz",
-  "license": "GNU"
+  "license": "GNU",
+  "dependencies": {
+    "blessed": "^0.1.81",
+    "node-blink1": "^0.2.2"
+  }
 }
