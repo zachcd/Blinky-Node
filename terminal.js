@@ -3,6 +3,7 @@ const blessed = require('blessed');
 const blink1 = require('node-blink1');
 const options = require('./menu.json');
 const color = require('./colors.json');
+const config = require('./config.json');
 
 // Create a screen object.
 var screen = blessed.screen({
@@ -16,7 +17,7 @@ screen.title = 'Blink Control';
 const menuList = blessed.list({
     label: 'Choose a Color Option',
     tags: true,
-    draggable: true,
+    draggable: false,
     top: "5%",
     left: "center",
     height: '70%',
@@ -67,7 +68,9 @@ const currentBox = blessed.box({
 });
 
 
-menuList.setItems(options)
+menuList.setItems(config.map((value, index, array)=>{
+     return Number(index+1).toString() + " | " + value['menu'];
+}))
 
 
 
@@ -79,41 +82,22 @@ screen.key(['escape', 'q', 'C-c'], function (ch, key) {
   })
 });
 
-screen.key(["1","2","3","4","5","6","7","8"], function (ch, key) {
-    currentBox.setContent("Current Mode is " + ch);
+screen.key(config.map((value, index, array)=>{ return String(index +1)}), function (ch, key) {
+    let mode = config[Number(ch) - 1];
+    
+    currentBox.setContent("Current Mode is " + mode.menu);
     kill = true
-    screen.render();
-    switch(ch){
-        case '1':
-            light.fadeToRGB(1000, color.red.r, color.red.g, color.red.b)
+    switch(mode.squence.type){
+        case 'solid':
+            light.fadeToRGB(mode.squence.time * 60 * 1000, mode.colors[0].r, mode.colors[0].g, mode.colors[0].b)
             break;
-        case '2':
-            light.fadeToRGB(1000, color.green.r, color.green.g, color.green.b)
-            break;
-        case '3':
-            light.fadeToRGB(1000, color.magenta.r, color.magenta.g, color.magenta.b)
-            break;
-        case '4':
-            light.fadeToRGB(1000, color.yellow.r, color.yellow.g, color.yellow.b)
-            break;
-        case '5':
-            light.fadeToRGB(1000, color.blue.r, color.blue.g, color.blue.b)
-            break;
-        case '6':
+        case 'breath':
             kill = false;
-            breath(1)
-            break;
-        case '7':
-            kill = false;
-            rage(1)
-            break;
-        case '8':
-            break;
-        case '9':
-            break;
-        case '0':
+            breather(mode.squence.time, mode.colors, 0, 0);
             break;
     }
+    screen.render();
+    
     return true;
 });
 
@@ -173,6 +157,24 @@ function breath(led){
             } else {
                 breath(1);
             }
+        })
+    })
+}
+
+function breather(time, colors, current, led){
+    
+    light.fadeToRGB(time,colors[current].r,colors[current].g,colors[current].b, led,()=>{
+        if(kill) return
+        light.fadeToRGB(time * 2, 0, 0, 0, led, ()=>{
+            if(kill) return
+            current++
+            if(current == colors.length) current = 0;
+            if(led == 1){
+                led++;
+            } else {
+                led = 1
+            }
+            breather(time, colors, current, led);
         })
     })
 }

@@ -1,0 +1,119 @@
+[{
+        "menu": "Focus Green",
+        "squence": {
+            "type":"solid",
+            "time": 0.01,
+            "repeats":"none"
+        },
+        "colors":[ {
+            "r": 3,
+            "g": 209,
+            "b": 23
+        }]
+    }, {
+        "menu": "Allow Interupts Magenta",
+        "squence": {
+            "type":"solid",
+            "time": 0.01,
+            "repeats":"none"
+        },
+        "colors":[ {
+            "r": 152,
+            "g": 60,
+            "b": 143
+        }]
+    },
+    {
+        "menu": "Focus Red",
+        "squence": {
+            "type":"solid",
+            "time": 0.01,
+            "repeats":"none"
+        },
+        "colors":[ {
+            "r": 209,
+            "g": 23,
+            "b": 3
+        }]
+    },
+    {
+        "menu": "Allow GOOD interupts Blue",
+        "squence": {
+            "type":"solid",
+            "time": 0.01,
+            "repeats":"none"
+        },
+        "colors":[ {
+            "r": 3,
+            "g": 86,
+            "b": 209
+        }]
+    },
+    {
+        "menu": "Meeting Yellow",
+        "squence": {
+            "type":"solid",
+            "time": 0.01,
+            "repeats":"none"
+        },
+        "colors":[ {
+            "r": 231,
+            "g": 252,
+            "b": 37
+        }]
+    },
+    {
+        "menu": "Killing it Blue",
+        "squence": {
+            "type":"breath",
+            "time": 0.01,
+            "repeats":"none"
+        },
+        "colors":[ {
+            "r": 3,
+            "g": 86,
+            "b": 209
+        },
+        {
+            "r": 3,
+            "g": 86,
+            "b": 209
+        }]
+    },
+    {
+        "menu": "Killing it red",
+        "squence": {
+            "type":"breath",
+            "time": 1000,
+            "repeats":"none"
+        },
+        "colors":[ {
+            "r": 209,
+            "g": 23,
+            "b": 3
+        },
+        {
+            "r": 209,
+            "g": 23,
+            "b": 3
+        }]
+    },
+    {
+        "menu": "WAH WAY",
+        "squence": {
+            "type":"breath",
+            "time": 0.01,
+            "repeats":"none"
+        },
+        "colors":[ {
+            "r": 3,
+            "g": 86,
+            "b": 209
+        },
+        {
+            "r": 209,
+            "g": 23,
+            "b": 3
+        }]
+    }
+]
